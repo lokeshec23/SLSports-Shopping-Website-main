@@ -70,12 +70,4 @@ function resetInput() {
 // <div id="msg-container">
 //   <h3 class="">Account Created Succssfully</h3>
 // </div>
-const head = document.getElementById("head");
-function setMessage(msg, className) {
-  const div = document.createElement("div");
-  const h3 = document.createElement("h3");
-  h3.textContent = msg;
-  h3.className.add(className);
-  div.append(h3);
-  head.append(div);
-}
+
