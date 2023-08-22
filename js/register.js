@@ -30,6 +30,8 @@ signBtn.addEventListener("click", (event) => {
     resetInput();
   } else {
     setLocalStorage();
+    alert("Account Created Successfully!");
+    resetInput();
   }
 });
 
@@ -39,24 +41,41 @@ function setLocalStorage() {
   localStorage.setItem("password", password.value);
 }
 
+const loginBtn = document.getElementById("login-btn");
+const cEmail = document.getElementById("cEmail");
+const cPassword = document.getElementById("cPassword");
+
+loginBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  var getEmail = localStorage.getItem("email", email.value);
+  var getPwd = localStorage.getItem("password", password.value);
+  if (getEmail === cEmail.value && getPwd === cPassword.value) {
+    alert("Login Successfully!");
+    resetInput();
+  } else {
+    alert("Invaild login");
+    resetInput();
+  }
+});
+
 function resetInput() {
   userName.value = "";
   email.value = "";
   password.value = "";
   confirmPassword.value = "";
+  cEmail.value = "";
+  cPassword.value = "";
 }
 
-const loginBtn = document.getElementById("login-btn");
-
-loginBtn.addEventListener("click", (event) => {
-  event.preventDefault();
-  const cEmail = document.getElementById("cEmail");
-  const cPassword = document.getElementById("cPassword");
-  var getEmail = localStorage.getItem("email", email.value);
-  var getPwd = localStorage.getItem("password", password.value);
-  if (getEmail === cEmail.value && getPwd === cPassword.value) {
-    alert("Login Successfully");
-  } else {
-    alert("Invaild login");
-  }
-});
+// <div id="msg-container">
+//   <h3 class="">Account Created Succssfully</h3>
+// </div>
+const head = document.getElementById("head");
+function setMessage(msg, className) {
+  const div = document.createElement("div");
+  const h3 = document.createElement("h3");
+  h3.textContent = msg;
+  h3.className.add(className);
+  div.append(h3);
+  head.append(div);
+}
